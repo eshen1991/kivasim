@@ -11,7 +11,9 @@ public class Circle {
 	private float x = Float.NaN, y = Float.NaN;	//start out at a non-existant location
 	float radius;
 	boolean isMoving;	//set to true if the circle is currently moving (to check for collisions) 
-	
+
+	public Circle() {}
+
 	/**Constructs a circle with the given radius at location 0,0.
 	 * @param circle_radius Radius of the circle
 	 */

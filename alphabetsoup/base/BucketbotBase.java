@@ -11,6 +11,8 @@ import alphabetsoup.framework.Circle;
 import alphabetsoup.framework.Map;
 import alphabetsoup.framework.SimulationWorld;
 import alphabetsoup.framework.Updateable;
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 /**BucketbotBase provides the basic functionality for a passive bucketbot.  It contains all of the
  * mechanisms to interact with other entities, as well as the basic physics,
@@ -24,11 +26,14 @@ public class BucketbotBase extends Circle implements Bucketbot, Updateable {
 	private float maxVelocity;
 	private float collisionPenaltyTime;
 
+	@JsonIgnore
 	private Bucket bucket = null;
 	
 	private float direction;		//current direction in radians
-	
+
+	@JsonProperty
 	private float xVelocity;
+	@JsonProperty
 	private float yVelocity;
 	
 	private float targetXVelocity;
@@ -42,7 +47,8 @@ public class BucketbotBase extends Circle implements Bucketbot, Updateable {
 	private double minUntil;		//minimum of *Until times -set in getNextEventTime
 
 	public double curTime;		//current time of last action
-	
+
+	@JsonIgnore
 	private BucketbotTask currentTask;
 	
 	public boolean drawBolded = false;
@@ -54,10 +60,13 @@ public class BucketbotBase extends Circle implements Bucketbot, Updateable {
 	private int numSetdowns;
 	private double distanceTraveled;
 	private int numCollisions;
-	
+
+
 	private HashMap<String, Double> totalTimes;	//amount of time in each state/task
 	private double taskStartTime = 0.0;
-	
+
+
+	public BucketbotBase () {}
 	public void resetStatistics() {
 		numPickups = 0;
 		numSetdowns = 0;
@@ -336,6 +345,7 @@ public class BucketbotBase extends Circle implements Bucketbot, Updateable {
 	/**
 	 * @return Returns the speed.
 	 */
+	@JsonIgnore
 	public float getSpeed() {
 		return (float)Math.sqrt(xVelocity*xVelocity + yVelocity*yVelocity);
 	}
@@ -343,6 +353,7 @@ public class BucketbotBase extends Circle implements Bucketbot, Updateable {
 	/**
 	 * @return Returns the targetSpeed.
 	 */
+	@JsonIgnore
 	public float getTargetSpeed() {
 		return (float)Math.sqrt(targetXVelocity*targetXVelocity + targetYVelocity*targetYVelocity);
 	}
@@ -350,6 +361,7 @@ public class BucketbotBase extends Circle implements Bucketbot, Updateable {
 	/**Returns the difference in velocity between the current velocity and target velocity. 
 	 * @return Returns the difference in velocity.
 	 */
+	@JsonIgnore
 	public float getTargetSpeedDifference() {
 		return (float)Math.sqrt( (targetXVelocity-xVelocity)*(targetXVelocity-xVelocity)
 				+ (targetYVelocity-yVelocity)*(targetYVelocity-yVelocity));
@@ -505,13 +517,16 @@ public class BucketbotBase extends Circle implements Bucketbot, Updateable {
 	/**
 	 * @return Returns the xVelocity.
 	 */
+	@JsonIgnore
 	public float getXVelocity() {
 		return xVelocity;
 	}
 
+
 	/**
 	 * @return Returns the yVelocity.
 	 */
+	@JsonIgnore
 	public float getYVelocity() {
 		return yVelocity;
 	}
@@ -529,4 +544,10 @@ public class BucketbotBase extends Circle implements Bucketbot, Updateable {
 	public float getCollisionPenaltyTime() {
 		return collisionPenaltyTime;
 	}
+
+	public double getBlockedUntil() {
+		return blockedUntil;
+	}
+
+
 }

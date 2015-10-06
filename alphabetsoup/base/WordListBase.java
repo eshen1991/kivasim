@@ -176,4 +176,40 @@ public class WordListBase implements WordList {
 	public HashMap<Character, Float> getLetterProbabilities() {
 		return letterProbabilities;
 	}
+
+	public List<Word> getWords() {
+		return words;
+	}
+
+	public String[] getBaseWords() {
+		return baseWords;
+	}
+
+	public List<LetterColor> getBaseColors() {
+		return baseColors;
+	}
+
+	public void setWords(List<Word> words) {
+		this.words = words;
+	}
+
+	public void setAvailableWords(List<Word> availableWords) {
+		this.availableWords = availableWords;
+	}
+
+	public void setCompletedWords(List<Word> completedWords) {
+		this.completedWords = completedWords;
+	}
+
+	public void setBaseWords(String[] baseWords) {
+		this.baseWords = baseWords;
+	}
+
+	public void setBaseColors(List<LetterColor> baseColors) {
+		this.baseColors = baseColors;
+	}
+
+	public void setLetterProbabilities(HashMap<Character, Float> letterProbabilities) {
+		this.letterProbabilities = letterProbabilities;
+	}
 }

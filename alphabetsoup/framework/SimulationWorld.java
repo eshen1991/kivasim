@@ -38,7 +38,11 @@ public class SimulationWorld {
 	public static MersenneTwisterFast rand = new MersenneTwisterFast();
 	
 	protected boolean usingGUI;
-	
+
+	public Properties getParams() {
+		return params;
+	}
+
 	protected Properties params;	//parameters of the simulation
 	
 	protected static SimulationWorld simulationWorld;
@@ -59,7 +63,9 @@ public class SimulationWorld {
 			b.resetStatistics();
 		wordList.resetStatistics();
 	}
-	
+
+	public SimulationWorld() {};
+
 	/**Builds the base for the simulation.  Loads in parameters from the specified configuration file.
 	 * Instantiates some of the basic simulation structure.
 	 * @param configuration_file_name path of the configuration file to load
