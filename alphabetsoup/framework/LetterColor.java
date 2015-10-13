@@ -3,16 +3,30 @@
  */
 package alphabetsoup.framework;
 
+import org.codehaus.jackson.annotate.JsonProperty;
+
 /**LetterColor represents the color of a Letter tile.  It maintains the color,
  * probability of any tile having the color, and each color's unique ID.
  * @author Chris Hazard
  */
 public class LetterColor {
-	
-	private float rValue, gValue, bValue;
+
+	@JsonProperty(value="rvalue")
+	private float rValue;
+	@JsonProperty(value="gvalue")
+	private float gValue;
+	@JsonProperty(value="bvalue")
+	private float bValue;
+	@JsonProperty(value="probability")
 	private float probability;
+
+	@JsonProperty(value="id")
 	private int colorID;
-	
+
+
+	public LetterColor() {
+	}
+
 	/**Constructs a color based on floating point values.
 	 * @param id ID # of the color
 	 * @param prob probability that this color will be chosen for a letter in range [0.0,1.0]

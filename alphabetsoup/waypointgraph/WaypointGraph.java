@@ -145,4 +145,16 @@ public class WaypointGraph {
 	public Set<Waypoint> getWaypoints() {
 		return waypoints;
 	}
+
+	public HashMap<LetterStation, Waypoint> getLetterStations() {
+		return letterStations;
+	}
+
+	public HashMap<WordStation, Waypoint> getWordStations() {
+		return wordStations;
+	}
+
+	public HashMap<Bucket, Waypoint> getBuckets() {
+		return buckets;
+	}
 }
